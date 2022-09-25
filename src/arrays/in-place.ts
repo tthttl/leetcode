@@ -40,3 +40,73 @@ export function removeDuplicates(nums: number[]): number {
     }
     return nums.length-numOfDuplicates;
 };
+
+//Given an integer array nums, move all 0's to the end of it while maintaining the relative order of the non-zero elements.
+export function moveZeroes(nums: number[]): void {
+    let lastNonZero=0;
+    for(let i=0; i<nums.length; i++){
+        if(nums[i]!==0){
+            nums[lastNonZero++]=nums[i];
+        }
+    }
+    for(let i=lastNonZero; i<nums.length; i++){
+        nums[i]=0;
+    }
+};
+
+//Given an integer array nums, move all the even integers at the beginning of the array followed by all the odd integers.
+export function sortArrayByParity(nums: number[]): number[] {
+    let evenIndex = nums.length - 1;
+    for(let i=0; i<evenIndex; i++){
+        if(!isEven(nums[i])){
+            evenIndex = findLastEvenIndex(evenIndex, i, nums);
+            if(evenIndex === -1){
+                break;
+            }
+            let temp = nums[i];
+            nums[i] = nums[evenIndex]
+            nums[evenIndex] = temp;
+            evenIndex--;
+        }
+    }
+    return nums;
+};
+
+function findLastEvenIndex(evenIndex: number, currentIndex: number, nums: number[]){
+    let result = -1;
+    for(let i=evenIndex; i>=currentIndex; i--){
+        if(isEven(nums[i])){
+            result = i;
+            break;
+        }
+    }
+    return result;
+}
+
+function isEven(num: number): boolean {
+    return num % 2 === 0;
+}
+
+export function sortArrayByParity2(nums: number[]): number[] {
+    let evenIndex = nums.length - 1;
+    let oddIndex = 0;
+
+    while(oddIndex<=evenIndex){
+
+        if(isEven(nums[evenIndex]) && !isEven(nums[oddIndex])){
+            let temp = nums[oddIndex];
+            nums[oddIndex] = nums[evenIndex]
+            nums[evenIndex] = temp;
+        }
+
+        if(nums[evenIndex] % 2 !== 0){
+            evenIndex--;
+        }
+        if(nums[oddIndex] % 2 === 0){
+            oddIndex++;
+        }
+
+    }
+
+    return nums;
+};
