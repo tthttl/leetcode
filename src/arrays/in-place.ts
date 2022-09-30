@@ -110,3 +110,29 @@ export function sortArrayByParity2(nums: number[]): number[] {
 
     return nums;
 };
+
+export function sortArrayByParity3(nums: number[]): number[] {
+    for (let i = 0, j = 0; j < nums.length; j++)
+        if (nums[j] % 2 === 0) {
+            let tmp = nums[i];
+            nums[i++] = nums[j];
+            nums[j] = tmp;
+        }
+    return nums;
+}
+
+// Given an integer array nums and an integer val, remove all occurrences of val in nums in-place.
+export function removeElement(nums: number[], val: number): number {
+    if(!nums || nums.length === 0){
+        return 0;
+    }
+    let j = 0;
+    for(let i=0; i<nums.length; i++){
+        if(nums[i] !== val){
+            const temp = nums[j];
+            nums[j++] = nums[i];
+            nums[i]=temp;
+        }
+    }
+    return j;
+};

@@ -1,4 +1,4 @@
-import { moveZeroes, removeDuplicates, replaceElements, sortArrayByParity, sortArrayByParity2 } from "./in-place";
+import { moveZeroes, removeDuplicates, removeElement, replaceElements, sortArrayByParity, sortArrayByParity2, sortArrayByParity3 } from "./in-place";
 
 describe('replaceElements', () => {
     it('should return [18,6,6,6,1,-1]', () => {
@@ -85,5 +85,58 @@ describe('sortArrayByParity2', () => {
         const arrayToModify = [1,1,1];
         sortArrayByParity2(arrayToModify);
         expect(arrayToModify).toEqual([1,1,1]);
+    });
+});
+
+describe('sortArrayByParity3', () => {
+    it('should return [2,4,6,1,5,3]', () => {
+        const arrayToModify = [1,2,3,4,5,6];
+        sortArrayByParity3(arrayToModify);
+        expect(arrayToModify).toEqual([2,4,6,1,5,3]);
+    });
+    it('should return [0,2,4,6,3,5,1]', () => {
+        const arrayToModify = [1,3,5,0,2,4,6];
+        sortArrayByParity3(arrayToModify);
+        expect(arrayToModify).toEqual([0,2,4,6,3,5,1]);
+    });
+    it('should return [2,1,3]', () => {
+        const arrayToModify = [1,2,3];
+        sortArrayByParity3(arrayToModify);
+        expect(arrayToModify).toEqual([2,1,3]);
+    });
+    it('should return [2,1,3]', () => {
+        const arrayToModify = [2,2,2];
+        sortArrayByParity3(arrayToModify);
+        expect(arrayToModify).toEqual([2,2,2]);
+    });
+    it('should return [1,1,1]', () => {
+        const arrayToModify = [1,1,1];
+        sortArrayByParity3(arrayToModify);
+        expect(arrayToModify).toEqual([1,1,1]);
+    });
+});
+
+describe('removeElement', () => {
+    it('should return 3', () => {
+        const arrayToModify = [3,2,3,4,3,6];
+        expect(removeElement(arrayToModify, 3)).toEqual(3);
+        expect(arrayToModify).toEqual([2,4,6,3,3,3]);
+    });
+    it('should return [4,6,3,3,3,3]', () => {
+        const arrayToModify = [3,3,3,3,4,6];
+        expect(removeElement(arrayToModify, 3)).toEqual(2);
+        expect(arrayToModify).toEqual([4,6,3,3,3,3]);
+    });
+
+    it('should return [1,2,4,5]', () => {
+        const arrayToModify = [1,2,4,5];
+        expect(removeElement(arrayToModify, 3)).toEqual(4);
+        expect(arrayToModify).toEqual([1,2,4,5]);
+    });
+
+    it('should return [3,3,3,3]', () => {
+        const arrayToModify = [3,3,3,3];
+        expect(removeElement(arrayToModify, 3)).toEqual(0);
+        expect(arrayToModify).toEqual([3,3,3,3]);
     });
 });
