@@ -136,3 +136,37 @@ export function removeElement(nums: number[], val: number): number {
     }
     return j;
 };
+
+export function reverseString(s: string[]): void {
+    let left = 0;
+    let right = s.length -1;
+    while(left<right){
+        const temp = s[right];
+        s[right] = s[left];
+        s[left] = temp;
+        left++;
+        right--;
+    }
+};
+
+export function maxArea(height: number[]): number {
+    let max = 0;
+    let left = 0;
+    let right = height.length-1;
+    let area = 0;
+
+    while(left < right){
+        if(height[left]>height[right]){
+            area = height[right] * (right-left);
+            right--;
+        } else {
+            area = height[left] * (right-left);
+            left++;
+        }
+        if(area > max){
+            max = area;
+        }
+    }
+    
+    return max;
+};

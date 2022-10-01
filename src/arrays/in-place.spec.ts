@@ -1,4 +1,4 @@
-import { moveZeroes, removeDuplicates, removeElement, replaceElements, sortArrayByParity, sortArrayByParity2, sortArrayByParity3 } from "./in-place";
+import { maxArea, moveZeroes, removeDuplicates, removeElement, replaceElements, reverseString, sortArrayByParity, sortArrayByParity2, sortArrayByParity3 } from "./in-place";
 
 describe('replaceElements', () => {
     it('should return [18,6,6,6,1,-1]', () => {
@@ -138,5 +138,21 @@ describe('removeElement', () => {
         const arrayToModify = [3,3,3,3];
         expect(removeElement(arrayToModify, 3)).toEqual(0);
         expect(arrayToModify).toEqual([3,3,3,3]);
+    });
+});
+
+describe('reverseString', () => {
+    it('should return olleh', () => {
+        const arrayToModify = ['h','e','l','l','o'];
+        expect(reverseString(arrayToModify));
+        expect(arrayToModify).toEqual(['o','l','l','e', 'h']);
+    });
+    
+});
+
+describe('maxArea', () => {
+    it('should return 49', () => {
+        const arrayToModify = [1,8,6,2,5,4,8,3,7];
+        expect(maxArea(arrayToModify)).toEqual(49);
     });
 });
