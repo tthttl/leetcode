@@ -45,3 +45,51 @@ export function findMaxAverage2(nums: number[], k: number): number {
     return largestSum/k;
 
 }
+
+// Given a binary array nums and an integer k, return the maximum number of consecutive 1's in the array
+// if you can flip at most k 0's.
+export function longestOnes(nums: number[], k: number): number {
+    let result = 0;
+    let left = 0;
+    let zerosInWindow = 0;
+
+    for(let right=0; right<nums.length; right++){
+
+        if(nums[right] === 0){
+            zerosInWindow++
+        }
+
+        while(zerosInWindow > k){
+            if(nums[left] === 0){
+                zerosInWindow--;
+            }
+            left++;
+        }
+
+        result = Math.max(result, (right-left)+1);
+    }
+
+    return result;
+};
+
+// Given an integer array nums, return the number of subarrays filled with 0.
+
+export function zeroFilledSubarray(nums: number[]): number {
+    let result = 0;
+    let left = 0;
+
+    for(let right = 0; right<nums.length; right++){
+
+        if(nums[right] === 0){
+            while(nums[left]!==0 && left <= right){
+                left++;
+            }
+            result += right-left+1; // Sum of the window lengths at each iteration
+        } else {
+            left = right;
+        }
+    
+    }
+
+    return result;
+};
