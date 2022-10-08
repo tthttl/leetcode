@@ -36,6 +36,7 @@ function reverseBetween(head: ListNode | null, left: number, right: number): Lis
         counter++
     }
     
+    //append reversed head to left position
     if(cursor){
         cursor!.next = prev;
     } else {
@@ -43,11 +44,12 @@ function reverseBetween(head: ListNode | null, left: number, right: number): Lis
         head = prev;
     }
 
-    
+    //loop until the end of reversed head
     while(cursor!.next){
         cursor = cursor!.next;
     }
     
+    //add remaining elements
     cursor!.next = next;
     return head;
     
