@@ -11,3 +11,16 @@ function missingNumber(nums: number[]): number {
     }
     return -1;
 };
+
+/* function missingNumberWithGauss(nums: number[]): number {
+    let sum = 0;
+    if (nums.length ===0){ 
+        return 0;
+    }
+    for (let index = 0; index< nums.length; index++) {
+        sum = sum + nums[index];
+    }
+    const expectedTotal = (nums.length * (nums.length+1))/2; //Gauss formula
+    return expectedTotal - sum;
+
+}; */
