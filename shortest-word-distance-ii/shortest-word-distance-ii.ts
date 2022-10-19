@@ -7,9 +7,7 @@ class WordDistance {
             if(!this.map.has(wordsDict[i])){
                 this.map.set(wordsDict[i], []);   
             }
-            const arr = this.map.get(wordsDict[i]);
-            arr!.push(i);
-            this.map.set(wordsDict[i], arr || []);
+            this.map.get(wordsDict[i]).push(i);
         }
     }
 
