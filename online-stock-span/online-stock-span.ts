@@ -1,16 +1,21 @@
 class StockSpanner {
     stack: number[] = [];
+    numOfConsLessItems = 0;
     constructor() {}
 
     next(price: number): number {
-        let ans = 0;
         this.stack.push(price);
         let pos = this.stack.length-1;
-        while(this.stack.length && this.stack[pos] <= price){
-            ans++;
-            pos--;
+        if(price > this.stack[pos]){
+            return this.numOfConsLessItems++;
+        } else {
+            this.numOfConsLessItems = 0;
+            while(this.stack.length && this.stack[pos] <= price){
+                this.numOfConsLessItems++
+                pos--;
+            }
+            return this.numOfConsLessItems;
         }
-        return ans;
     }
 }
 /**
