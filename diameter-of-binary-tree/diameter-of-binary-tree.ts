@@ -13,21 +13,23 @@
  */
 
 function diameterOfBinaryTree(root: TreeNode | null): number {
-  const dfs = (root: TreeNode | null, curr: number, depth: number, ans: number): [number, number] => {
+    
+  let max = 0;
+    
+  const dfs = (root: TreeNode | null): number => {
     if (!root) {
-      return [depth, ans];
+      return 0;
     }
 
-    depth++;
-    curr++;
-    const left = dfs(root.left, curr,  depth, ans);
-    const right = dfs(root.right, curr, depth, ans);
-    depth = Math.max(left[0], right[0]);  
-    ans = Math.max(left[1], right[1]);
-    ans = Math.max(ans, (left[0]-curr)+(right[0]-curr));
+    const left = dfs(root.left);
+    const right = dfs(root.right);
 
-    return [depth, ans];
+    max = Math.max(max, left + right);
+
+    return Math.max(left, right) + 1;
   };
 
-  return dfs(root, -1, -1, 0)[1];
+  dfs(root);
+    
+  return max;  
 }
