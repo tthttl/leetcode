@@ -17,8 +17,9 @@ function minReorder(n: number, connections: number[][]): number {
 
   const seen = new Set<number>();
   seen.add(0);  
+  let ans = 0;
   const dfs = (node: number): number => {
-    let ans = 0;
+
     for(const neighbour of graph.get(node) || []){
       if(!seen.has(neighbour)){
         //check if current edge is in original graph => if yes, it means it has to be swapped, so its directed TOWARDS 0
@@ -26,7 +27,7 @@ function minReorder(n: number, connections: number[][]): number {
           ans++;
         }
         seen.add(neighbour);
-        ans += dfs(neighbour);
+        dfs(neighbour);
       }
     }
     return ans;
