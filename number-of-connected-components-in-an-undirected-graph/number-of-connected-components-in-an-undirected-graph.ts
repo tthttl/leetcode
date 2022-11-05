@@ -28,6 +28,7 @@ function countComponents(n: number, edges: number[][]): number {
     const nextNode = [...graph.keys()].find((node: number) => !seen.has(node));
     if(Array.isArray(graph.get(nextNode)) && !graph.get(nextNode)?.length){ //nodes with no edges
       seen.add(nextNode);
+      continue;
     }
     dfs(nextNode);
   }
