@@ -23,7 +23,7 @@ function validPath(n: number, edges: number[][], source: number, destination: nu
       }
       if(!seen.has(neighbor)){
         seen.add(neighbor);
-        dfs(neighbor);
+        ans = dfs(neighbor);
       }
     }
     return ans;
