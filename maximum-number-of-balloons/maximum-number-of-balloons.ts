@@ -8,7 +8,6 @@ function maxNumberOfBalloons(text: string): number {
     
     occurences.set('l', Math.floor((occurences.get('l') || 1) /2));
     occurences.set('o', Math.floor((occurences.get('o') || 1) /2));
-    console.log(occurences);
     
     let min = Number.POSITIVE_INFINITY;
     
