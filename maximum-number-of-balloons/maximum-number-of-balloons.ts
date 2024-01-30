@@ -9,13 +9,17 @@ function maxNumberOfBalloons(text: string): number {
     occurences.set('l', Math.floor((occurences.get('l') || 1) /2));
     occurences.set('o', Math.floor((occurences.get('o') || 1) /2));
     
+    if(occurences.size < 'balon'.length){
+        return 0;
+    }
+    
     let min = Number.POSITIVE_INFINITY;
     
     for(let num of occurences.values()){
         min = Math.min(min, num);
     }
     
-    return occurences.size < 'balon'.length ? 0 : min;
+    return min;
 };
 
 
