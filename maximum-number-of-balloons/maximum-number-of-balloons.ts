@@ -1,17 +1,22 @@
-function maxNumberOfBalloons(text: string): number {
-    const map = new Map<string,number>();
-    
-    for(let i=0; i<text.length; i++){
-        map.set(text[i], (map.get(text[i])||0)+1);
+function maxNumberOfBalloons(text: string): number {     
+    const occurences = new Map<string, number>();
+    for(let char of text){
+       if('balon'.indexOf(char) > -1){
+           occurences.set(char, (occurences.get(char) || 0)+1);
+       }    
     }
-
-    let count = map.get('b');
     
-    while(count){
-        if(map.get('a') >= count && map.get('n') >= count && map.get('l') >= count * 2 && map.get('o') >= count * 2){
-            return count;
-        }
-        count--;
+    occurences.set('l', Math.floor((occurences.get('l') || 1) /2));
+    occurences.set('o', Math.floor((occurences.get('o') || 1) /2));
+    console.log(occurences);
+    
+    let min = Number.POSITIVE_INFINITY;
+    
+    for(let num of occurences.values()){
+        min = Math.min(min, num);
     }
-    return 0;
+    
+    return occurences.size < 'balon'.length ? 0 : min;
 };
+
+
